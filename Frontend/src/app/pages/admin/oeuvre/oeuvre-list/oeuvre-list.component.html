@@ -1,0 +1,26 @@
+<mat-card>
+    <mat-list>
+        <div mat-subheader>Liste d'Oeuvres</div>
+        <mat-list-item *ngFor="let oeuvre of oeuvres">
+            <mat-icon mat-list-icon>category</mat-icon>
+            <div mat-line>{{ oeuvre.id }}</div>
+            <div mat-line>{{ oeuvre.titre}}</div>
+            <div>
+                <button mat-fab color="basic" class="space-button" [routerLink]="['/admin/oeuvre/detail', oeuvre.id]">
+                    <mat-icon>info</mat-icon>
+                </button>
+                <button mat-fab color="accent" class="space-button" [routerLink]="['/admin/oeuvre/update', oeuvre.id]">
+                    <mat-icon>open_in_new</mat-icon>
+                </button>
+                <button mat-fab color="warn" (click)="deleteOeuvre(oeuvre.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-list>
+
+    <div class="container text-center mt20">
+        <button mat-raised-button color="primary" routerLink="/admin/oeuvre/create">Nouvel oeuvre</button>
+    </div>
+</mat-card>

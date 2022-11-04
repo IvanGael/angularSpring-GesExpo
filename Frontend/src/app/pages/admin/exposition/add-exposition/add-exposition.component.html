@@ -1,0 +1,69 @@
+<mat-card>
+
+    <div mat-subheader><h1>Créer une exposition</h1></div>
+
+    <form (ngSubmit)="addExpo()" [formGroup]="addExpoForm">
+
+      <p *ngIf="!addExpoForm.valid" style="color:red;">Veuillez renseigner tous les champs</p>
+      <p *ngIf="errorMsg != '' " style="color:red;">{{errorMsg}}</p>
+      <p *ngIf="successMsg != '' " style="color:green;">{{successMsg}}</p>
+      
+        <!--Titre-->
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Titre *</mat-label>
+            <input matInput placeholder="Enter here" formControlName="titre">
+        </mat-form-field>
+
+        <!--Etat-->
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Chosir un état</mat-label>
+            <mat-select disableRipple formControlName="etat">
+              <mat-option value="1">Actuellement programmé</mat-option>
+              <mat-option value="0">Actuellement non programmé</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!--Duree-->
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Durée *</mat-label>
+            <input type="number" matInput placeholder="Enter here" formControlName="duree">
+        </mat-form-field>
+
+
+
+          <!--DateExpo-->
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Date d'exposition *</mat-label>
+            <input type="date" matInput placeholder="Enter here" formControlName="dateExpo">
+        </mat-form-field>
+
+
+        <!--Oeuvre-->
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Choisir une oeuvre</mat-label>
+          <mat-select formControlName="oeuvreId">
+            <mat-option *ngFor="let oeuvre of oeuvres" [value]="oeuvre.id">
+              {{oeuvre.titre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <!--Session-->
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Choisir une session</mat-label>
+          <mat-select formControlName="sessionId">
+            <mat-option *ngFor="let session of sessions" [value]="session.id">
+              {{session.titre}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+
+
+        <div class="container text-center">
+            <button type="submit" mat-raised-button color="primary" [disabled]="!addExpoForm.valid">Ajouter</button>
+        </div>
+
+      </form>
+</mat-card>

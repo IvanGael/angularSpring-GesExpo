@@ -1,0 +1,29 @@
+<mat-card>
+    <mat-list>
+        <div mat-subheader>Liste d'expositions</div>
+        <mat-list-item *ngFor="let expo of expositions">
+            <mat-icon mat-list-icon>category</mat-icon>
+            <div mat-line>{{ expo.id }}</div>
+            <div mat-line>{{ expo.titre}}</div>
+            <div mat-line>{{ expo.dateExpo}}</div>
+            <div mat-line *ngIf="expo.etat == 1" style="color: chartreuse;">Actuellement programmé</div>
+            <div mat-line *ngIf="expo.etat == 0" style="color: crimson;">Actuellement non programmé</div>
+            <div>
+                <button mat-fab color="basic" class="space-button" [routerLink]="['/admin/exposition/detail', expo.id]">
+                    <mat-icon>info</mat-icon>
+                </button>
+                <button mat-fab color="accent" class="space-button" [routerLink]="['/admin/exposition/update', expo.id]">
+                    <mat-icon>open_in_new</mat-icon>
+                </button>
+                <button mat-fab color="warn" (click)="deleteExpo(expo.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-list>
+
+    <div class="container text-center mt20">
+        <button mat-raised-button color="primary" routerLink="/admin/exposition/create">Nouvel exposition</button>
+    </div>
+</mat-card>

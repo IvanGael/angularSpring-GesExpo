@@ -1,0 +1,40 @@
+<mat-card>
+
+    <div mat-subheader><h1>Créer une session</h1></div>
+
+    <form (ngSubmit)="addSession()" [formGroup]="addSessionForm">
+
+        <p *ngIf="!addSessionForm.valid" style="color:red;">Veuillez renseigner tous les champs</p>
+        <p *ngIf="errorMsg != '' " style="color:red;">{{errorMsg}}</p>
+        <p *ngIf="successMsg != '' " style="color:green;">{{successMsg}}</p>
+      
+        <!--Titre-->
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Titre *</mat-label>
+            <input matInput placeholder="Enter here" formControlName="titre">
+        </mat-form-field>
+
+        <!--date debut-->
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Date début *</mat-label>
+            <input type="date" matInput placeholder="Enter here" formControlName="dateDebut">
+        </mat-form-field>
+
+         <!--date fin-->
+         <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Date fin *</mat-label>
+            <input type="date" matInput placeholder="Enter here" formControlName="dateFin">
+        </mat-form-field>
+
+       <!--Localisation-->
+       <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Localisation *</mat-label>
+        <input matInput placeholder="Enter here" formControlName="localisation">
+       </mat-form-field>
+        
+        <div class="container text-center">
+            <button type="submit" mat-raised-button color="primary" [disabled]="!addSessionForm.valid">Ajouter</button>
+        </div>
+
+      </form>
+</mat-card>

@@ -1,0 +1,73 @@
+<mat-card>
+
+    <div mat-subheader><h1>Créer une oeuvre</h1></div>
+
+    
+
+    <form (ngSubmit)="addOeuvre()" [formGroup]="addOeuvreForm">
+
+      <p *ngIf="!addOeuvreForm.valid" style="color:red;">Veuillez renseigner tous les champs</p>
+      <p *ngIf="errorMsg != '' " style="color:red;">{{errorMsg}}</p>
+      <p *ngIf="successMsg != '' " style="color:green;">{{successMsg}}</p>
+      
+        <!--Titre-->
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Titre *</mat-label>
+            <input matInput placeholder="Enter here" formControlName="titre">
+        </mat-form-field>
+
+        <!--Annee-->
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Année *</mat-label>
+            <input type="number" matInput placeholder="Enter here" formControlName="annee">
+        </mat-form-field>
+
+        <!--Prix-->
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Prix *</mat-label>
+            <input type="number" matInput placeholder="Enter here" formControlName="prix">
+        </mat-form-field>
+
+        <!--Rating-->
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Selectionner un rating</mat-label>
+            <mat-select disableRipple formControlName="rating">
+              <mat-option value="Amateur">Amateur</mat-option>
+              <mat-option value="Pro">Pro</mat-option>
+              <mat-option value="Expert">Expert</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <!--Type-->
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Selectionner un type</mat-label>
+          <mat-select disableRipple formControlName="type">
+            <mat-option value="Sculpture">Sculpture</mat-option>
+            <mat-option value="Peinture à huile">Peinture à huile</mat-option>
+          </mat-select>
+      </mat-form-field>
+
+
+         <!--Image-->
+         <!--
+         <div class="cont">
+            <div class="button-wrap" class="full-width">
+              <label class="button" for="upload">Choisir une photo</label>
+              <input id="upload" type="file" formControlName="image">
+            </div>
+          </div>
+        -->
+        
+                                                                                                                                                                                                     
+
+        <div class="container text-center">
+            <button type="submit" mat-raised-button color="primary" [disabled]="!addOeuvreForm.valid">Ajouter</button>
+        </div>
+
+        <!--
+        {{addOeuvreForm.status}}
+        -->
+
+      </form>
+</mat-card>

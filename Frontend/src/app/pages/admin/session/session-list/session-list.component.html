@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-list>
+        <div mat-subheader>Liste des sessions</div>
+        <mat-list-item *ngFor="let session of sessions">
+            <mat-icon mat-list-icon>category</mat-icon>
+            <div mat-line>{{ session.id }}</div>
+            <div mat-line>{{ session.titre }}</div>
+            <div mat-line>{{ session.dateDebut }}</div>
+            <div>
+                <button mat-fab color="accent" class="space-button" [routerLink]="['/admin/session/update', session.id]">
+                    <mat-icon>open_in_new</mat-icon>
+                </button>
+                <button mat-fab color="warn" (click)="deleteSession(session.id)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </div>
+            <mat-divider></mat-divider>
+        </mat-list-item>
+    </mat-list>
+
+    <div class="container text-center mt20">
+        <button mat-raised-button color="primary" routerLink="/admin/session/create">Nouvelle session</button>
+    </div>
+</mat-card>
